@@ -1,0 +1,57 @@
+﻿@model List<TodscWebApp.Models.PostsToDisplay>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+@{
+    int counter = 0; 
+}
+
+@foreach (var item in Model)
+{
+    <div id='@("carouselExampleControls"+counter)' class="carousel slide w-50" data-ride="carousel">
+
+        <div class="carousel-inner" >
+            @{
+                var first = true;
+            }
+
+            @foreach (var pro in item.Urls)
+            {
+                <div class="carousel-item @(first ? Html.Raw("active") : Html.Raw(""))">
+                    <img class="d-block w-100" src="@pro" alt="@pro" width="414" height="368">
+                </div>
+                first = false;
+
+            }
+
+        </div>
+
+        <a class="carousel-control-prev" href='@("#carouselExampleControls"+counter)' role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href='@("#carouselExampleControls"+counter)' role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+    </div>
+
+  
+        foreach (var tag in item.Tags)
+        {
+            <div class="bootstrap-tagsinput">@tag</div>
+        }
+        
+ counter++;
+
+}
+
+
+
+
+
+
+
+<style>
+    .bootstrap-tagsinput {
+        width: 100% !important;
+    }
+</style>

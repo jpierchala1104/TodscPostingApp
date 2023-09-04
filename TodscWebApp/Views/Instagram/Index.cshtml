@@ -1,0 +1,18 @@
+﻿@model TodscWebApp.ViewModel.IndexViewModel
+@{
+    ViewData["Title"] = "Instagram";
+}
+
+    <form asp-action="Create" enctype="multipart/form-data">
+
+
+        <input asp-for="Post.ImageTags" />
+        <input asp-for="Post.Images" type="file" multiple/>
+
+
+
+        <input type="submit" />
+    </form>
+
+@await Html.PartialAsync("Posts", Model.PostsToDisplayViewModel)
+
